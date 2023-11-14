@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CategoryService } from 'src/app/modules/shared/services/category.service';
 import { NewCategoryComponent } from '../new-category/new-category.component';
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
+import { ConfirmComponent } from 'src/app/modules/shared/comoponents/confirm/confirm.component';
 
 @Component({
   selector: 'app-category',
@@ -91,6 +92,24 @@ export class CategoryComponent implements OnInit {
     return this.snackbar.open(message, action, {
       duration: 2000
     })
+  }
+
+  delete(id: any){
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      width: '450px',
+      data: {id:id}
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if( result ==1){
+        this.openSnackBar("Cateoria eliminada", "Exitosa");
+        this.getCategories();
+
+      } else if (result ==2){
+        this.openSnackBar("Se produjo un error al eliminar categoria", "Error")
+      }
+     
+    });
   }
 
 }

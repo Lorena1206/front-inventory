@@ -4,13 +4,15 @@ import { SidenaComponent } from './components/sidena/sidena.component';
 import { MaterialModule } from './material.module';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { ConfirmComponent } from './comoponents/confirm/confirm.component';
 
 
 
 
 @NgModule({
   declarations: [
-    SidenaComponent
+    SidenaComponent,
+    ConfirmComponent
   ],
   exports:[
     SidenaComponent
