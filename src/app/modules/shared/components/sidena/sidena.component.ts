@@ -1,5 +1,6 @@
 import { MediaMatcher } from '@angular/cdk/layout';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { KeycloakService } from 'keycloak-angular';
 
 @Component({
   selector: 'app-sidena',
@@ -9,7 +10,11 @@ import { Component } from '@angular/core';
 export class SidenaComponent {
 
 
+
+
   mobileQuery: MediaQueryList;
+  username: any;
+  private keyClockService = inject(KeycloakService);
 
   menuNav =[
     {name: "Home", route: "home", icon: "home" },
@@ -20,6 +25,16 @@ export class SidenaComponent {
   constructor(media: MediaMatcher){
 
     this.mobileQuery = media.matchMedia('(max-width:600px)');
+  }
+
+  ngOnInit(): void{
+    this.username = this.keyClockService.getUsername();
+
+  }
+
+  logout(){
+    this.keyClockService.logout();
+
   }
 
 }

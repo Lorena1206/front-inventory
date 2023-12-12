@@ -18,6 +18,7 @@
             <mat-icon>person_outline</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="logout()"></button>
             <mat-icon>exit_to_app</mat-icon>
             Cerrar Sesión
           </mat-menu>
@@ -42,8 +43,7 @@
         <!----profile-->
         <div class="profile-card">
           <div class="header">
-            <h2>Lorena Hernandez</h2>
-            <h4>lorena@gmail.com</h4>
+            <h2>{{username}}</h2>
           </div>
         </div>
         <mat-divider></mat-divider>
