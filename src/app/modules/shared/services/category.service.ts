@@ -57,6 +57,20 @@ export class CategoryService {
     return this.http.get(endpoint,id);
 
   }
+
+  /**
+   * 
+    export excel categories
+   */
+  exportCategories(){
+    const endpoint = `${base_Url}/categories/export/excel`;
+    return this.http.get(endpoint,{
+      responseType: 'blob'
+    });
+
+  }
+
+  
   
 
 

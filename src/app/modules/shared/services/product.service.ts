@@ -55,4 +55,11 @@ export class ProductService {
     return this.http.get(endpoint);
   }
 
+  exportProduct(){
+    const endpoint = `${base_url}/products/export/excel`;
+    return this.http.get(endpoint,{
+      responseType:'blob'
+    });
+  }
+
 }
